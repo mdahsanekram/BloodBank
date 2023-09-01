@@ -18,12 +18,12 @@ const inventorySchema=new mongoose.Schema({
     },
     organisation:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"organisation",
+        ref:"users",
         require:[true,"organisation is require"],
     },
     hospital:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'organisation',
+        ref:'users',
         require:function(){
             return this.inventoryType==='out'
         }
