@@ -26,7 +26,6 @@ const cerateInventoryCOntroller=async(req,res)=>{
         }
         const inventory=new inventoryModel(req.body)
         await inventory.save();
-        console.log("Ahsan",inventory)
         return res.status(200).send({
             success:true,
             message:"New Blood Record Added."
