@@ -16,19 +16,5 @@ const connectDB=async()=>{
 module.exports=connectDB
 
 
-// mongoose.connect('mongodb://localhost:27017/local',
-//   {
-//     useNewUrlParser: true,
-//     // useFindAndModify: true,
-//     useUnifiedTopology: true
-//   },(err)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log("successful connect")
-//     }
-
-//   }
-// );
 
 

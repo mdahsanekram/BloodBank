@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-        role: {
+    role: {
         type: String,
         require: [true, 'role is require'],
         enum: ['admin', 'organisation', 'donar', 'hospital']
@@ -32,28 +32,25 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: [true, 'password is require'],
     },
-organisationName: {
-    type: String,
-    require: function () {
-        if (this.role === 'organisation') {
-            return true
+    organisationName: {
+        type: String,
+        require: function () {
+            if (this.role === 'organisation') {
+                return true
+            }
+            return false
         }
-        return false
-    }
-},
-hospitalName: {
-    type: String,
-    require: function () {
-        if (this.role === 'hospital') {
-            return true
-        }
-        return false
     },
-}
-},{timestamps:true});
+    hospitalName: {
+        type: String,
+        require: function () {
+            if (this.role === 'hospital') {
+                return true
+            }
+            return false
+        },
+    }
+}, { timestamps: true });
 
-// const userModel = mongoose.model('users', userSchema);
 
-// module.exports = userModel;
-
-module.exports= mongoose.model('users',userSchema)
+module.exports = mongoose.model('users', userSchema)

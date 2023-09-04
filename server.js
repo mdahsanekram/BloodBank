@@ -12,20 +12,6 @@ const app = express()
 
 connectDB();
 
-// mongoose.connect('mongodb://localhost:27017/local',
-//   {
-//     useNewUrlParser: true,
-//     // useFindAndModify: true,
-//     useUnifiedTopology: true
-//   },(err)=>{
-//     if(err){
-//         console.log("AHsan",err)
-//     }else{
-//         console.log("successful connect")
-//     }
-
-//   }
-// );
 
 // middleware
 app.use(express.json());

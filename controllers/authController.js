@@ -2,6 +2,8 @@ const userModel = require('../models/userModal')
 const bcrypt = require("bcryptjs")
 var jwt = require('jsonwebtoken');
 
+// signup call back
+
 const registerController = async (req, res) => {
 
     try {
