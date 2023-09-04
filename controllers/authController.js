@@ -40,6 +40,7 @@ const registerController = async (req, res) => {
 
 // login call Back
 const loginController = async (req, res) => {
+    console.log(req.body)
     try {
         const existingUser = await userModel.findOne({ email: req.body.email });
         if (!existingUser) {
