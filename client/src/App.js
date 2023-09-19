@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
 import Register from "./pages/auth/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoute from "./components/Routes/ProtectedRoute";
-import PublicRoute from "./components/Routes/PublicRoute";
+import ProtectedRoute from "./routers/ProtectedRoute";
+import PublicRoute from "./routers/PublicRoute";
 import Donar from "./pages/Dashboard/Donar";
 import Hospitals from "./pages/Dashboard/Hospitals";
 import OrganisationPage from "./pages/Dashboard/OrganisationPage";
@@ -18,6 +19,7 @@ import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+
 function App() {
   return (
     <Provider store={store}>
@@ -127,7 +129,7 @@ function App() {
           path="/register"
           element={
             <PublicRoute>
-              <Register />
+              <SignUp />
             </PublicRoute>
           }
           />

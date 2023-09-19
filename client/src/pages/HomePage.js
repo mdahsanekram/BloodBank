@@ -15,7 +15,9 @@ const HomePage = () => {
   //get function
   const getBloodRecords = async () => {
     try {
-      const { data } = await API.get("/inventory/get-inventory");
+      const { data } = await API.get("/inventory/get-inventory",{
+        // body:
+      });
       if (data?.success) {
         setData(data?.inventory);
         // console.log(data);
@@ -28,6 +30,10 @@ const HomePage = () => {
   useEffect(() => {
     getBloodRecords();
   }, []);
+
+  const handleAddModel=()=>{
+
+  }
   return (
     <Layout>
       {user?.role === "admin" && navigate("/admin")}
@@ -37,7 +43,7 @@ const HomePage = () => {
       ) : (
         <>
           <div className="container">
-            <h4
+            <h4  onClick={handleAddModel}
               className="ms-4"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"

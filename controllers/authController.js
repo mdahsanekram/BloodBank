@@ -40,7 +40,6 @@ const registerController = async (req, res) => {
 
 // login call Back
 const loginController = async (req, res) => {
-    console.log(req.body)
     try {
         const existingUser = await userModel.findOne({ email: req.body.email });
         if (!existingUser) {
@@ -66,8 +65,8 @@ const loginController = async (req, res) => {
             })
 
         }
-        const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRATE, {
-            expiresIn: "1d",
+        const token = jwt.sign({ userId: existingUser._id,role:existingUser.role }, process.env.JWT_SECRATE, {
+            expiresIn: "4h",
         });
         return res.status(200).send({
             success: true,
@@ -77,7 +76,7 @@ const loginController = async (req, res) => {
         })
 
     } catch (errors) {
-        // console.log(errors)
+        console.log(errors)
         res.status(500).send({
             message: "Erorrs in Login API",
             success: false,
@@ -106,4 +105,28 @@ const currentUserController = async (req, res) => {
 
 }
 
-module.exports = { registerController, loginController, currentUserController };
+const currentUserTokenController = async (req, res) => {
+    try {
+        const existingUser = await userModel.findOne({ _id: req.body.userId })
+        const token = jwt.sign({ userId: existingUser._id,role:existingUser.role }, process.env.JWT_SECRATE, {
+            expiresIn: "4h",
+        });
+        return res.status(200).send({
+            success: true,
+            token
+        })
+
+    } catch (errors) {
+        console.log(errors)
+        return res.status(500).send({
+            success: false,
+            message: "Enable to get current user",
+            errors
+        })
+    }
+
+}
+
+
+
+module.exports = { registerController, loginController, currentUserController,currentUserTokenController };

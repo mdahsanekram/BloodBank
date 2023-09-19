@@ -46,7 +46,7 @@ const cerateInventoryCOntroller = async (req, res) => {
 
 const getInventoryCOntroller = async (req, res) => {
     try {
-        const inventory = await inventoryModel.findOne({ organisation: req.body.organisation })
+        const inventory = await inventoryModel.find({ organisation: req.body.organisation })
         return res.status(200).send({
             success: true,
             message: "All record seccussfully",
